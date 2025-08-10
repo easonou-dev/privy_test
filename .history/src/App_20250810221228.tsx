@@ -5,11 +5,9 @@ import { useEffect } from 'react';
 
 // Privy 登录按钮组件
 function LoginButton() {
-  // 移除 createWallet，因为现在依赖模态框的自动创建
-  const { ready, authenticated, user, login, logout } = usePrivy();
+  const { ready, authenticated, user, login, logout, createWallet } = usePrivy();
   const { initOAuth } = useLoginWithOAuth();
 
-  // 移除 useEffect 中关于 user.wallet 为 null 的处理，现在应该会自动创建
   useEffect(() => {
     if (user) {
       console.log('Privy user object in useEffect:', user);
@@ -20,6 +18,8 @@ function LoginButton() {
           console.log('Privy user.wallet.walletClientType in useEffect:', user.wallet.walletClientType);
       } else {
           console.log('Privy user.wallet in useEffect is null or undefined.');
+          // 对于直接 OAuth 登录，createOnLogin 无效，钱包需要手动创建
+          // 如果用户已认证但没有钱包，可以考虑在这里显示一个“创建钱包”的提示或按钮
       }
     }
   }, [user]);
@@ -30,12 +30,20 @@ function LoginButton() {
     return <div>加载中...</div>;
   }
 
-  // 移除 handleGoogleLogin 函数，因为不再需要直接的谷歌登录按钮
+  const handleGoogleLogin = async () => {
+    try {
+      await initOAuth({ provider: 'google' });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   if (!authenticated) {
     return (
-      // 只保留 Privy 模态框登录按钮
-      <button onClick={login}>登录 (Privy 模态框)</button>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <button onClick={login}>登录 (Privy 模态框)</button>
+        <button onClick={handleGoogleLogin}>使用 Google 登录 (直接)</button>
+      </div>
     );
   }
 
@@ -68,8 +76,12 @@ function LoginButton() {
       {walletAddress ? (
         <p>钱包地址: {walletAddress}</p>
       ) : (
-        // 移除手动创建钱包的提示和按钮，因为现在应该会自动创建
-        <p>未能找到 Solana 钱包地址。请尝试重新登录或检查 Privy 配置。</p>
+        // {{ edit_2 }}
+        <div>
+          <p>未能找到 Solana 钱包地址。请尝试重新登录或检查 Privy 配置。</p>
+          <p>对于通过 Google 直接登录，Privy 不会自动创建嵌入式钱包。</p>
+          <button onClick={createWallet}>点击这里创建您的嵌入式钱包</button> {/* {{ edit_3 }} */}
+        </div>
       )}
       <button onClick={logout}>登出</button>
     </div>
@@ -94,7 +106,7 @@ function App() {
         },
         embeddedWallets: {
           solana: {
-            createOnLogin: 'users-without-wallets', // 保留此配置，因为它对 Privy 模态框登录有效
+            // createOnLogin: 'users-without-wallets', // 对于直接 OAuth 登录无效，因此注释掉
           },
         },
         loginMethods: ['google', 'email', 'sms', 'wallet'],
