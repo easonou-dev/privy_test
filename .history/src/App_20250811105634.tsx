@@ -85,8 +85,8 @@ function App() {
       appId="cme2p5y4q00iwl80b44z6k73s"
       config={{
         appearance: {
-          walletChainType: 'solana',
-          walletList: ['phantom',  'okx_wallet', 'solflare','metamask'],
+          walletChainType: 'ethereum-and-solana',
+          walletList: ['phantom', 'metamask', 'okx_wallet', 'solflare'],
         },
         externalWallets: {
           solana: {

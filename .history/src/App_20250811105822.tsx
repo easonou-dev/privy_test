@@ -86,7 +86,7 @@ function App() {
       config={{
         appearance: {
           walletChainType: 'solana',
-          walletList: ['phantom',  'okx_wallet', 'solflare','metamask'],
+          walletList: ['phantom',  'okx_wallet', 'solflare',],
         },
         externalWallets: {
           solana: {
