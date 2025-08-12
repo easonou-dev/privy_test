@@ -7,4 +7,14 @@ import { Buffer } from 'buffer';
 (window as any).Buffer = Buffer;
 (globalThis as any).Buffer = Buffer;
 
+// 添加process polyfill
+(window as any).process = {
+  env: {},
+  version: '',
+  nextTick: (fn: Function) => setTimeout(fn, 0)
+};
+
+// 添加global polyfill
+(window as any).global = globalThis;
+
 // 如果需要，可以在这里添加其他Node.js模块的polyfill

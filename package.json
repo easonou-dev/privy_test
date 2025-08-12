@@ -18,11 +18,14 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@privy-io/react-auth": "^2.21.2",
+    "@solana/spl-token": "^0.4.0",
     "@solana/wallet-adapter-base": "^0.9.27",
     "@solana/wallet-adapter-react": "^0.15.39",
     "@solana/wallet-adapter-wallets": "^0.19.37",
     "@solana/web3.js": "^1.98.0",
-    "@solana/spl-token": "^0.4.0",
+    "bn.js": "^5.2.2",
+    "hash.js": "^1.1.7",
+    "js-sha3": "^0.9.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "rollup-plugin-node-polyfills": "^0.2.1",
@@ -40,5 +43,4 @@
     "typescript": "^5.2.2",
     "vite": "^6.3.5"
   }
-  
 }

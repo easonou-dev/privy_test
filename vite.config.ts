@@ -31,8 +31,12 @@ export default defineConfig({
         rollupNodePolyfills() as any,
       ],
     },
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
   },
   optimizeDeps: {
+    exclude: ["solconsdk"],
     esbuildOptions: {
       define: {
         // Node.js global to browser globalThis
