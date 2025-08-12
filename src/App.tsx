@@ -1,12 +1,12 @@
 import { PrivyProvider, usePrivy } from '@privy-io/react-auth';
 import { toSolanaWalletConnectors, useSolanaWallets } from '@privy-io/react-auth/solana';
-import { useEffect, useState } from 'react';
-import { PublicKey } from '@solana/web3.js';
+import { useEffect } from 'react'; //useState 
+//import { PublicKey } from '@solana/web3.js';
 
 
 
-// 导入SolConSdk及其相关类型
-import SolConSdk, { getEnvParams, PrivyWallet } from 'solconsdk';
+// 导入SolConSdk及其相关类型 - 暂时注释掉用于 Vercel 部署
+// import SolConSdk, { getEnvParams, PrivyWallet } from 'solconsdk';
 
 
 // Privy 登录按钮组件
@@ -93,13 +93,14 @@ function LoginButton() {
         <p>未能找到 Solana 钱包地址。请尝试重新登录或检查 Privy 配置。</p>
       )}
       <button onClick={logout}>登出</button>
-      {/* 渲染 CreateMarketTest 组件 */}
-      {walletAddress && <CreateMarketTest user={user} solanaWallets={solanaWallets} primaryWallet={primaryWallet} />}
+      {/* 渲染 CreateMarketTest 组件 - 暂时注释掉用于 Vercel 部署 */}
+      {/* {walletAddress && <CreateMarketTest user={user} solanaWallets={solanaWallets} primaryWallet={primaryWallet} />} */}
     </div>
   );
 }
 
-// 新的 CreateMarketTest 组件
+// 新的 CreateMarketTest 组件 - 暂时注释掉用于 Vercel 部署
+/*
 function CreateMarketTest({ solanaWallets, primaryWallet }: { user: any; solanaWallets: any[]; primaryWallet: any }) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -230,6 +231,7 @@ function CreateMarketTest({ solanaWallets, primaryWallet }: { user: any; solanaW
     </div>
   );
 }
+*/
 
 // App 主组件
 function App() {

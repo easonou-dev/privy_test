@@ -18,7 +18,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      solconsdk: path.resolve(__dirname, "../solConSdk/dist/esm"),
+      // solconsdk: path.resolve(__dirname, "../solConSdk/dist/esm"), // 暂时注释掉用于 Vercel 部署
       // This is required for NodeGlobalsPolyfillPlugin to work
       stream: "rollup-plugin-node-polyfills/polyfills/stream",
       buffer: "rollup-plugin-node-polyfills/polyfills/buffer-es6",
@@ -36,7 +36,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ["solconsdk"],
+    exclude: [], // ["solconsdk"], // 暂时注释掉用于 Vercel 部署
     esbuildOptions: {
       define: {
         // Node.js global to browser globalThis

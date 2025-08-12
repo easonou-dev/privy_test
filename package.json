@@ -28,8 +28,7 @@
     "js-sha3": "^0.9.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "rollup-plugin-node-polyfills": "^0.2.1",
-    "solconsdk": "file:../solConSdk"
+    "rollup-plugin-node-polyfills": "^0.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
