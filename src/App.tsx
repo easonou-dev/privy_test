@@ -263,7 +263,7 @@ function App() {
             createOnLogin: 'users-without-wallets', 
           },
         },
-        loginMethods: ['wallet', 'email', 'google', 'sms']
+        loginMethods: ['wallet',  'google']
       }}
     >
       <LoginButton />
