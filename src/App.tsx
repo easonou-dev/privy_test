@@ -237,13 +237,13 @@ function CreateMarketTest({ solanaWallets, primaryWallet }: { user: any; solanaW
 function App() {
   return (
     <PrivyProvider
-      appId="cme2p5y4q00iwl80b44z6k73s"
+      appId="cme2p5y4q00iwl80b44z6k73s" //记得替换id
       config={{
         appearance: {
           walletChainType: 'solana-only',
           walletList: ['phantom', 'okx_wallet', 'solflare'], 
         },
-        solanaClusters: [
+        solanaClusters: [ //记得替换RPC
           {
             name: 'mainnet-beta', 
             rpcUrl: 'https://mainnet.helius-rpc.com/?api-key=7b73474a-082e-4823-be84-8dd53275cb7a'
