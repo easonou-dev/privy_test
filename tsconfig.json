@@ -23,9 +23,9 @@
     /* Path Aliases */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
-      // "solconsdk": ["../solConSdk/dist/esm/index.d.ts"], // 暂时注释掉用于 Vercel 部署
-      // "solconsdk/*": ["../solConSdk/dist/esm/*"] // 暂时注释掉用于 Vercel 部署
+      "@/*": ["src/*"],
+      "solconsdk": ["../solConSdk/dist/esm/index.d.ts"],
+      "solconsdk/*": ["../solConSdk/dist/esm/*"]
     }
   },
   "include": [
